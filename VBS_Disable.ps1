@@ -1,3 +1,9 @@
+
+param([switch]$Elevated)
+
+# ============================================================================
+# AUTO-ELEVATION TO ADMINISTRATOR
+# ============================================================================
 ﻿<#
 .SYNOPSIS
     VBS Disabler - Professional Edition with Auto-Elevation
@@ -28,12 +34,6 @@
     - VMware Broadcom community
     - All users who tested and provided feedback
 #>
-
-param([switch]$Elevated)
-
-# ============================================================================
-# AUTO-ELEVATION TO ADMINISTRATOR
-# ============================================================================
 
 function Test-Admin {
     $currentUser = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
