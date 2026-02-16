@@ -16,7 +16,7 @@
 #       Professional UI with detailed instructions
 #
 # .NOTES
-#     Author: ZACODEC (https://github.com/ZACODEC)
+#     Author: ZACODEC (https://github.com/zainmustafam977/)
 #     Version:  3.0 - Ultimate Public Edition
 #     Tested on: Windows 11 24H2/25H2 Build 26200+
 #     License: MIT
