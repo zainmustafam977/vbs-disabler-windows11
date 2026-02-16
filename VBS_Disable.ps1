@@ -49,17 +49,23 @@ if (-not $Elevated) {
         try {
             $scriptPath = $MyInvocation.MyCommand.Path
             if (-not $scriptPath) {
-                # Running via iex/irm (no script file) - download to temp file for elevation
+                # Running via iex/irm (no script file on disk)
+                # Save the in-memory script to a temp file for elevation
                 $scriptPath = Join-Path $env:TEMP "VBS_Disable.ps1"
-                [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-                Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ZACODEC/VBS-Disabler/main/VBS_Disable.ps1' -OutFile $scriptPath -UseBasicParsing
+                $scriptText = $MyInvocation.MyCommand.ScriptBlock.Ast.Extent.Text
+                [System.IO.File]::WriteAllText($scriptPath, $scriptText, (New-Object System.Text.UTF8Encoding $true))
             }
             Start-Process powershell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`" -Elevated" -f $scriptPath) -Verb RunAs
             exit
         }
         catch {
             Write-Host "ERROR: Failed to elevate to Administrator" -ForegroundColor Red
-            Write-Host "Please right-click PowerShell and select 'Run as Administrator'" -ForegroundColor Yellow
+            Write-Host ""
+            Write-Host "Please run this in an ADMIN PowerShell window:" -ForegroundColor Yellow
+            Write-Host '  irm https://bit.ly/vbs-fix | iex' -ForegroundColor Cyan
+            Write-Host ""
+            Write-Host "To open Admin PowerShell:" -ForegroundColor Yellow
+            Write-Host "  Right-click Start button > Terminal (Admin)" -ForegroundColor Cyan
             pause
             exit 1
         }
