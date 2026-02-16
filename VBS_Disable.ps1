@@ -1,39 +1,37 @@
+# .SYNOPSIS
+#     VBS Disabler - Professional Edition with Auto-Elevation
+# .DESCRIPTION
+#     Complete solution for disabling VBS/Device Guard/HVCI on Windows 11 25H2
+#
+#     Features:
+#       Auto-elevation to Administrator
+#       Automatic execution policy bypass
+#       System Restore point creation
+#       DG Readiness Tool download and execution
+#       Windows Hello VBS fix (critical for 24H2/25H2)
+#       Comprehensive registry modifications
+#       BCD configuration
+#       Windows feature disabling
+#       Auto-verification on next boot
+#       Professional UI with detailed instructions
+#
+# .NOTES
+#     Author: ZACODEC (https://github.com/ZACODEC)
+#     Version:  3.0 - Ultimate Public Edition
+#     Tested on: Windows 11 24H2/25H2 Build 26200+
+#     License: MIT
+#
+#     Special Thanks:
+#       Reddit community (Windows Hello VBS fix discovery)
+#       Microsoft Q&A community
+#       VMware Broadcom community
+#       All users who tested and provided feedback
 
 param([switch]$Elevated)
 
 # ============================================================================
 # AUTO-ELEVATION TO ADMINISTRATOR
 # ============================================================================
-﻿<#
-.SYNOPSIS
-    VBS Disabler - Professional Edition with Auto-Elevation
-.DESCRIPTION
-    Complete solution for disabling VBS/Device Guard/HVCI on Windows 11 25H2
-
-    Features:
-    - Auto-elevation to Administrator
-    - Automatic execution policy bypass
-    - System Restore point creation
-    - DG Readiness Tool download and execution
-    - Windows Hello VBS fix (critical for 24H2/25H2)
-    - Comprehensive registry modifications
-    - BCD configuration
-    - Windows feature disabling
-    - Auto-verification on next boot
-    - Professional UI with detailed instructions
-
-.NOTES
-    Author: ZACODEC (https://github.com/ZACODEC)
-    Version:  3.0 - Ultimate Public Edition
-    Tested on: Windows 11 24H2/25H2 Build 26200+
-    License: MIT
-
-    Special Thanks:
-    - Reddit community (Windows Hello VBS fix discovery)
-    - Microsoft Q&A community
-    - VMware Broadcom community
-    - All users who tested and provided feedback
-#>
 
 function Test-Admin {
     $currentUser = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
@@ -49,7 +47,14 @@ if (-not $Elevated) {
         Start-Sleep -Seconds 2
 
         try {
-            Start-Process powershell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`" -Elevated" -f $MyInvocation.MyCommand.Path) -Verb RunAs
+            $scriptPath = $MyInvocation.MyCommand.Path
+            if (-not $scriptPath) {
+                # Running via iex/irm (no script file) - download to temp file for elevation
+                $scriptPath = Join-Path $env:TEMP "VBS_Disable.ps1"
+                [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+                Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ZACODEC/VBS-Disabler/main/VBS_Disable.ps1' -OutFile $scriptPath -UseBasicParsing
+            }
+            Start-Process powershell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`" -Elevated" -f $scriptPath) -Verb RunAs
             exit
         }
         catch {
