@@ -1,0 +1,37 @@
+# Logs
+*.log
+
+# Test files
+test/
+*.test.ps1
+
+# Local configuration
+*.local.ps1
+
+# Backup / copy files
+*- Copy*
+*- Copy.*
+
+# Internal docs (not for public repo)
+ENHANCEMENT_SUMMARY.md
+GITHUB_UPLOAD_INSTRUCTIONS.md
+
+# Windows
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.bak
+
+# Archives
+*.zip
+*.tar.gz

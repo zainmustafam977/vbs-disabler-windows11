@@ -1,28 +1,46 @@
-# VBS Disabler - Ultimate Edition 🚀
+<div align="center">
 
-<p align="center">
-  <strong>Fix the "A hypervisor has been detected" issue and enable VMware Workstation CPL0 mode for maximum performance!</strong>
-</p>
+# ⚡ VBS Disabler — Ultimate Edition v3.0
 
-<p align="center">
-  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
-  <a href="https://www.microsoft.com/windows/"><img src="https://img.shields.io/badge/Windows%2011-24H2%2F25H2-0078D6?logo=windows&logoColor=white" alt="Windows 11"></a>
-  <a href="https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion"><img src="https://img.shields.io/badge/VMware-Workstation-607078?logo=vmware&logoColor=white" alt="VMware Workstation"></a>
-  <a href="https://docs.microsoft.com/powershell/"><img src="https://img.shields.io/badge/PowerShell-5.1%2B-5391FE?logo=powershell&logoColor=white" alt="PowerShell 5.1+"></a>
-  <a href="https://github.com/ZACODEC/vbs-disabler/releases"><img src="https://img.shields.io/github/v/release/ZACODEC/vbs-disabler?include_prereleases&label=Version&color=brightgreen" alt="Version"></a>
-  <a href="https://github.com/ZACODEC/vbs-disabler/stargazers"><img src="https://img.shields.io/github/stars/ZACODEC/vbs-disabler?style=flat&label=Stars&color=orange" alt="Stars"></a>
-</p>
+### Disable VBS on Windows 11 24H2/25H2 & unleash VMware Workstation CPL0 mode
 
-<p align="center">
-  Created by <strong><a href="https://github.com/ZACODEC">ZACODEC</a></strong> &bull; Version 3.0.0 &bull; 95%+ Success Rate
-</p>
+<br>
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Windows 11](https://img.shields.io/badge/Windows%2011-24H2%2F25H2-0078D6?style=for-the-badge&logo=windows11&logoColor=white)](https://www.microsoft.com/windows/)
+[![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-5391FE?style=for-the-badge&logo=powershell&logoColor=white)](https://docs.microsoft.com/powershell/)
+[![VMware](https://img.shields.io/badge/VMware-Workstation-607078?style=for-the-badge&logo=vmware&logoColor=white)](https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion)
+
+[![GitHub Stars](https://img.shields.io/github/stars/zainmustafam977/vbs-disabler-windows11?style=for-the-badge&label=Stars&color=orange)](https://github.com/zainmustafam977/vbs-disabler-windows11/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/zainmustafam977/vbs-disabler-windows11?style=for-the-badge&label=Forks&color=blue)](https://github.com/zainmustafam977/vbs-disabler-windows11/network/members)
+[![GitHub Issues](https://img.shields.io/github/issues/zainmustafam977/vbs-disabler-windows11?style=for-the-badge&label=Issues&color=red)](https://github.com/zainmustafam977/vbs-disabler-windows11/issues)
+
+<br>
+
+**95%+ Success Rate** · Created by [**ZACODEC**](https://github.com/zainmustafam977)
+
+<br>
+
+<img src="https://user-images.githubusercontent.com/placeholder/demo-screenshot.gif" alt="Demo" width="700">
+
+<sub><i>One command. Full speed VMware. No hypervisor conflicts.</i></sub>
+
+</div>
+
+<br>
 
 ---
 
+<br>
+
 ## 📖 Table of Contents
 
+<details open>
+<summary><b>Click to navigate</b></summary>
+
 - [The Problem](#-the-problem)
-- [Quick Start](#-quick-start)
+- [Quick Start (One-Liner)](#-quick-start)
+- [Installation Methods](#-installation-methods)
 - [Key Features](#-key-features)
 - [How It Works](#-how-it-works)
 - [Prerequisites](#-prerequisites)
@@ -33,63 +51,156 @@
 - [FAQ](#-frequently-asked-questions)
 - [Security Considerations](#-security-considerations)
 - [Rollback / Undo](#-rollback--undo)
+- [Files Created](#-files-created-by-the-script)
 - [Contributing](#-contributing)
 - [License](#-license)
+
+</details>
+
+<br>
 
 ---
 
 ## 🔍 The Problem
 
-Starting with **Windows 11 24H2/25H2**, Microsoft made Virtualization-Based Security (VBS) extremely aggressive. This causes:
+Starting with **Windows 11 24H2/25H2**, Microsoft made Virtualization-Based Security (VBS) extremely aggressive:
 
-- ❌ **VMware Workstation** stuck in **ULM mode** (User Level Monitor) — significantly slower
-- ❌ VMware error: *"A hypervisor has been detected. Features required to run this VM have been disabled."*
-- ❌ Nested virtualization broken even with VBS "disabled" via normal methods
-- ❌ Standard registry tweaks no longer work on Build 26200+
+| Symptom | Impact |
+|---------|--------|
+| 🔴 VMware stuck in **ULM mode** | ~40% slower VM performance |
+| 🔴 *"A hypervisor has been detected"* | VMs refuse to start or run crippled |
+| 🔴 Standard VBS disable methods fail | Registry tweaks ignored on Build 26200+ |
+| 🔴 Even "disabled" VBS stays alive | Hidden Windows Hello dependency |
 
 ### 🔑 The Discovery
 
-The Reddit and Microsoft Q&A communities discovered that **Windows Hello VBS** is a hidden dependency that keeps VBS alive on 24H2/25H2, even when every other VBS setting is turned off. This script applies that critical fix along with everything else needed.
+> The Reddit and Microsoft Q&A communities discovered that **Windows Hello VBS** is a hidden dependency that keeps VBS alive on 24H2/25H2, even when every other VBS setting is turned off.
+
+This script applies that **critical fix** along with everything else needed.
+
+<br>
 
 ---
 
-## 🎯 Quick Start
+## 🚀 Quick Start
 
-### One-Line Install
+> **Open PowerShell and paste one of these commands. That's it.**
+
+### ⚡ Method 1 — Short URL (Recommended)
 
 ```powershell
-# Download and run — that's it!
-.\Final_VBS_Disabler_Professional_v2.ps1
+irm https://bit.ly/vbs-fix | iex
 ```
 
-### Or: Right-Click Method
+### 🔗 Method 2 — Direct GitHub URL
 
-1. Download `Final_VBS_Disabler_Professional_v2.ps1`
+```powershell
+irm https://raw.githubusercontent.com/zainmustafam977/vbs-disabler-windows11/main/VBS_Disable.ps1 | iex
+```
+
+### 🛡️ Method 3 — Full Command (if `irm` is restricted)
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/zainmustafam977/vbs-disabler-windows11/main/VBS_Disable.ps1'))
+```
+
+<details>
+<summary><b>🔗 Same as above but with the short URL</b></summary>
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; iex ((New-Object System.Net.WebClient).DownloadString('https://bit.ly/vbs-fix'))
+```
+
+</details>
+
+<br>
+
+> [!TIP]
+> **Not running as Admin?** No problem — the script auto-elevates itself. Just allow the UAC prompt when it appears.
+
+> [!NOTE]
+> The short URL `https://bit.ly/vbs-fix` redirects to the raw GitHub script. You can verify by opening it in a browser first.
+
+<br>
+
+---
+
+## 📥 Installation Methods
+
+<table>
+<tr>
+<th>Method</th>
+<th>Command / Steps</th>
+<th>Best For</th>
+</tr>
+<tr>
+<td><b>⚡ One-Liner</b></td>
+<td>
+
+```powershell
+irm https://bit.ly/vbs-fix | iex
+```
+
+</td>
+<td>Fastest — just paste & go</td>
+</tr>
+<tr>
+<td><b>📥 Download & Run</b></td>
+<td>
+
+1. Download [`VBS_Disable.ps1`](https://github.com/zainmustafam977/vbs-disabler-windows11/raw/main/VBS_Disable.ps1)
 2. Right-click → **Run with PowerShell**
-3. Allow the UAC prompt
-4. Follow the on-screen instructions (~15 minutes)
-5. Restart → Done!
+3. Allow UAC prompt
 
-> **No manual `Set-ExecutionPolicy` needed.** The script handles elevation, bypass, and everything automatically.
+</td>
+<td>Offline use or if you want to review the script first</td>
+</tr>
+<tr>
+<td><b>🖥️ Manual PowerShell</b></td>
+<td>
+
+```powershell
+PowerShell -ExecutionPolicy Bypass -File ".\VBS_Disable.ps1"
+```
+
+</td>
+<td>If right-click doesn't work</td>
+</tr>
+<tr>
+<td><b>🔒 Restricted Environment</b></td>
+<td>
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/zainmustafam977/vbs-disabler-windows11/main/VBS_Disable.ps1'))
+```
+
+</td>
+<td>Corporate/locked-down machines</td>
+</tr>
+</table>
+
+<br>
 
 ---
 
 ## 🌟 Key Features
 
 | Feature | Description |
-|---------|-------------|
-| 🔐 **Auto-Elevation** | Automatically requests Administrator privileges |
-| ⚙️ **Execution Policy Bypass** | No need to change system policy manually |
-| 💾 **System Restore Point** | Creates a safety checkpoint before any changes |
-| 🔑 **Windows Hello VBS Fix** | The critical 24H2/25H2 fix (95%+ success rate) |
-| 📦 **DG Readiness Tool** | Auto-downloads and runs Microsoft's official tool |
-| 🗝️ **12+ Registry Keys** | Comprehensive VBS/HVCI/Device Guard/Credential Guard disable |
-| 🥾 **BCD Configuration** | Boot-level hypervisor disable |
-| 🔧 **Windows Features** | Disables Hyper-V, VM Platform, Sandbox, App Guard |
-| ✅ **Auto-Verification** | Post-reboot script confirms everything worked |
-| 🔄 **Persistent Enforcement** | Optional task to prevent Windows Update from reverting |
-| 📝 **Full Logging** | Timestamped transcript saved to `C:\VMwareFix\` |
-| 🎨 **Professional UI** | Color-coded output, progress bars, step counter |
+|:-------:|-------------|
+| 🔐 | **Auto-Elevation** — Automatically requests Administrator privileges |
+| ⚙️ | **Execution Policy Bypass** — No manual policy changes needed |
+| 💾 | **System Restore Point** — Creates a safety checkpoint before any changes |
+| 🔑 | **Windows Hello VBS Fix** — The critical 24H2/25H2 fix (95%+ success rate) |
+| 📦 | **DG Readiness Tool** — Auto-downloads and runs Microsoft's official tool |
+| 🗝️ | **12+ Registry Keys** — Comprehensive VBS/HVCI/Device Guard/Credential Guard disable |
+| 🥾 | **BCD Configuration** — Boot-level hypervisor disable |
+| 🔧 | **Windows Features** — Disables Hyper-V, VM Platform, Sandbox, App Guard |
+| ✅ | **Auto-Verification** — Post-reboot script confirms everything worked |
+| 🔄 | **Persistent Enforcement** — Optional task to prevent Windows Update from reverting |
+| 📝 | **Full Logging** — Timestamped transcript saved to `C:\VMwareFix\` |
+| 🎨 | **Professional UI** — Color-coded output, progress bars, step counter |
+
+<br>
 
 ---
 
@@ -98,26 +209,24 @@ The Reddit and Microsoft Q&A communities discovered that **Windows Hello VBS** i
 The script performs **10 steps** in sequence:
 
 ```
-STEP  1/10  Create System Restore Point
-STEP  2/10  Guide: Disable Tamper Protection (manual)
-STEP  3/10  Guide: Disable Memory Integrity (manual)
-STEP  4/10  Download & Run DG Readiness Tool
-STEP  5/10  Apply Windows Hello VBS Fix ← THE KEY FIX
-STEP  6/10  Apply 12+ Registry Modifications
-STEP  7/10  Configure BCD (hypervisorlaunchtype = Off)
-STEP  8/10  Disable Windows Features (Hyper-V, etc.)
-STEP  9/10  Create Auto-Verification Script
-STEP 10/10  Optional: Persistent Enforcement Task
-            → Restart Computer
+ STEP  1/10  ▸ Create System Restore Point
+ STEP  2/10  ▸ Guide: Disable Tamper Protection (manual)
+ STEP  3/10  ▸ Guide: Disable Memory Integrity (manual)
+ STEP  4/10  ▸ Download & Run DG Readiness Tool
+ STEP  5/10  ▸ Apply Windows Hello VBS Fix    ← THE KEY FIX
+ STEP  6/10  ▸ Apply 12+ Registry Modifications
+ STEP  7/10  ▸ Configure BCD (hypervisorlaunchtype = Off)
+ STEP  8/10  ▸ Disable Windows Features (Hyper-V, etc.)
+ STEP  9/10  ▸ Create Auto-Verification Script
+ STEP 10/10  ▸ Optional: Persistent Enforcement Task
+              → Restart Computer
 ```
 
-### What Gets Modified
-
 <details>
-<summary><b>Registry Keys (click to expand)</b></summary>
+<summary><b>📋 Registry Keys Modified (click to expand)</b></summary>
 
 | Key | Value | Purpose |
-|-----|-------|---------|
+|-----|:-----:|---------|
 | `DeviceGuard\Scenarios\WindowsHello\Enabled` | `0` | **THE critical fix** for 24H2/25H2 |
 | `DeviceGuard\EnableVirtualizationBasedSecurity` | `0` | Main VBS switch |
 | `DeviceGuard\RequirePlatformSecurityFeatures` | `0` | Platform security requirements |
@@ -136,7 +245,7 @@ All keys are under `HKLM:\SYSTEM\CurrentControlSet\Control\` or `HKLM:\SOFTWARE\
 </details>
 
 <details>
-<summary><b>Windows Features Disabled (click to expand)</b></summary>
+<summary><b>🔧 Windows Features Disabled (click to expand)</b></summary>
 
 | Feature | Description |
 |---------|-------------|
@@ -150,7 +259,7 @@ All keys are under `HKLM:\SYSTEM\CurrentControlSet\Control\` or `HKLM:\SOFTWARE\
 </details>
 
 <details>
-<summary><b>BCD Changes (click to expand)</b></summary>
+<summary><b>🥾 BCD Changes (click to expand)</b></summary>
 
 ```
 bcdedit /set hypervisorlaunchtype off
@@ -159,18 +268,22 @@ bcdedit /set {current} hypervisorlaunchtype off
 
 </details>
 
+<br>
+
 ---
 
 ## 📋 Prerequisites
 
 | Requirement | Details |
-|-------------|---------|
-| **OS** | Windows 11 24H2 or 25H2 (Build 26100+) |
-| **VMware** | VMware Workstation Pro / Player (any recent version) |
-| **Privileges** | Script auto-elevates — just allow the UAC prompt |
-| **Internet** | Required for DG Readiness Tool download |
-| **Time** | ~15 minutes including restart |
-| **PowerShell** | 5.1+ (built into Windows) |
+|:-----------:|---------|
+| 🖥️ **OS** | Windows 11 24H2 or 25H2 (Build 26100+) |
+| 📦 **VMware** | VMware Workstation Pro / Player (any recent version) |
+| 🔑 **Privileges** | Script auto-elevates — just allow the UAC prompt |
+| 🌐 **Internet** | Required for DG Readiness Tool download |
+| ⏱️ **Time** | ~15 minutes including restart |
+| 💻 **PowerShell** | 5.1+ (built into Windows) |
+
+<br>
 
 ---
 
@@ -185,18 +298,18 @@ bcdedit /set {current} hypervisorlaunchtype off
 ### During the Script
 
 | Step | What Happens | Your Action |
-|------|--------------|-------------|
-| System Restore | Auto-creates restore point | None |
-| Tamper Protection | Opens Windows Security | Toggle **OFF** manually, then confirm |
-| Memory Integrity | Opens Core Isolation | Toggle **OFF** manually, then confirm |
-| DG Readiness Tool | Downloads & launches | Press **F3** to select Disable |
-| Windows Hello Fix | Applies registry keys | None — automatic |
-| Registry | Sets 12+ keys | None — automatic |
-| BCD | Sets hypervisor off | None — automatic |
-| Features | Disables Hyper-V etc. | None — automatic |
-| Verification | Creates boot script | None — automatic |
-| Enforcement | Optional boot task | Choose **Y** (recommended) |
-| Restart | Prompts to restart | Press **Y** |
+|:----:|--------------|:-----------:|
+| 1 | System Restore point created | None |
+| 2 | Opens Windows Security | Toggle Tamper Protection **OFF** |
+| 3 | Opens Core Isolation | Toggle Memory Integrity **OFF** |
+| 4 | Downloads & launches DG Tool | Press **F3** to select Disable |
+| 5 | Windows Hello VBS fix | None — automatic |
+| 6 | Sets 12+ registry keys | None — automatic |
+| 7 | BCD hypervisor off | None — automatic |
+| 8 | Disables Hyper-V etc. | None — automatic |
+| 9 | Creates verification script | None — automatic |
+| 10 | Optional boot task | Choose **Y** (recommended) |
+| 🔄 | Restart prompt | Press **Y** |
 
 ### After Restart
 
@@ -204,7 +317,8 @@ bcdedit /set {current} hypervisorlaunchtype off
 2. **Verification window** — A PowerShell window auto-opens showing 5 tests. All should show `[PASS]`.
 3. **Launch VMware** — Start a VM. Look at the bottom-right corner — it should say **CPL0** (not ULM).
 
-> ⚠️ **During reboot**, watch for black screens asking *"Press F3 to disable Credential Guard/VBS"*. **Press F3** if prompted!
+> [!CAUTION]
+> **During reboot**, watch for black screens asking *"Press F3 to disable Credential Guard/VBS"*. **Press F3** if prompted!
 
 ---
 
@@ -435,7 +549,7 @@ Restart-Computer
 
 The script handles this automatically, but if it still fails:
 ```powershell
-PowerShell -ExecutionPolicy Bypass -File ".\Final_VBS_Disabler_Professional_v2.ps1"
+PowerShell -ExecutionPolicy Bypass -File ".\VBS_Disable.ps1"
 ```
 
 </details>
@@ -532,8 +646,8 @@ All files are stored in `C:\VMwareFix\`:
 
 Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-- 🐛 **Found a bug?** [Open an issue](https://github.com/ZACODEC/vbs-disabler/issues/new?template=bug_report.md)
-- 💡 **Have an idea?** [Request a feature](https://github.com/ZACODEC/vbs-disabler/issues/new?template=feature_request.md)
+- 🐛 **Found a bug?** [Open an issue](https://github.com/zainmustafam977/vbs-disabler-windows11/issues/new?template=bug_report.md)
+- 💡 **Have an idea?** [Request a feature](https://github.com/zainmustafam977/vbs-disabler-windows11/issues/new?template=feature_request.md)
 - ⭐ **Like this project?** Give it a star!
 
 ---
@@ -553,8 +667,20 @@ This project is licensed under the [MIT License](LICENSE) — free for personal 
 
 ---
 
-<p align="center">
-  <strong>Made with ❤️ by <a href="https://github.com/ZACODEC">ZACODEC</a></strong>
-  <br>
-  If this script saved you hours of debugging, consider giving it a ⭐
-</p>
+<div align="center">
+
+<br>
+
+**If this script saved you hours of debugging, please give it a ⭐**
+
+<br>
+
+[![Star This Repo](https://img.shields.io/badge/⭐_Star_This_Repo-yellow?style=for-the-badge)](https://github.com/zainmustafam977/vbs-disabler-windows11)
+
+<br>
+
+Made with ❤️ by [**ZACODEC**](https://github.com/zainmustafam977)
+
+<sub>© 2025-2026 ZACODEC. All rights reserved.</sub>
+
+</div>

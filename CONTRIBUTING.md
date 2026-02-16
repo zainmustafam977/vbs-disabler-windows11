@@ -5,7 +5,7 @@ Thank you for your interest in contributing! This project benefits from communit
 ## 🐛 Reporting Bugs
 
 1. **Check existing issues** — your problem may already be reported.
-2. **Open a new issue** using the [Bug Report template](https://github.com/ZACODEC/vbs-disabler/issues/new?template=bug_report.md).
+2. **Open a new issue** using the [Bug Report template](https://github.com/zainmustafam977/vbs-disabler-windows11/issues/new?template=bug_report.md).
 3. Include:
    - Windows version and build number (`winver`)
    - VMware Workstation version
@@ -15,7 +15,7 @@ Thank you for your interest in contributing! This project benefits from communit
 
 ## 💡 Suggesting Features
 
-1. Open an issue using the [Feature Request template](https://github.com/ZACODEC/vbs-disabler/issues/new?template=feature_request.md).
+1. Open an issue using the [Feature Request template](https://github.com/zainmustafam977/vbs-disabler-windows11/issues/new?template=feature_request.md).
 2. Describe the problem your feature would solve.
 3. Propose a solution if you have one.
 
@@ -26,7 +26,7 @@ Thank you for your interest in contributing! This project benefits from communit
 1. Fork the repository
 2. Clone your fork:
    ```bash
-   git clone https://github.com/YOUR-USERNAME/vbs-disabler.git
+   git clone https://github.com/YOUR-USERNAME/vbs-disabler-windows11.git
    ```
 3. Create a feature branch:
    ```bash
@@ -50,7 +50,7 @@ Thank you for your interest in contributing! This project benefits from communit
 1. Ensure the script parses without errors:
    ```powershell
    $null = [System.Management.Automation.Language.Parser]::ParseFile(
-       '.\Final_VBS_Disabler_Professional_v2.ps1', [ref]$null, [ref]$errors
+       '.\VBS_Disable.ps1', [ref]$null, [ref]$errors
    )
    $errors.Count  # Should be 0
    ```
@@ -64,7 +64,7 @@ Thank you for your interest in contributing! This project benefits from communit
 
 **Do NOT open a public issue for security vulnerabilities.**
 
-Instead, use [GitHub Security Advisories](https://github.com/ZACODEC/vbs-disabler/security/advisories/new) for private disclosure. See [SECURITY.md](SECURITY.md) for details.
+Instead, use [GitHub Security Advisories](https://github.com/zainmustafam977/vbs-disabler-windows11/security/advisories/new) for private disclosure. See [SECURITY.md](SECURITY.md) for details.
 
 ## 📋 Code of Conduct
 
@@ -79,4 +79,4 @@ Every contribution makes this tool better for the community. Whether it's a bug 
 
 ---
 
-**Created by [ZACODEC](https://github.com/ZACODEC)**
+**Created by [ZACODEC](https://github.com/zainmustafam977)**

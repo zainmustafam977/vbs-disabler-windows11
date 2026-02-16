@@ -440,6 +440,6 @@ Before running this script, verify:
 
 ---
 
-**Created by: [ZACODEC](https://github.com/ZACODEC)**
+**Created by: [ZACODEC](https://github.com/zainmustafam977)**
 **Last Updated: February 2026**
 **Version: 2.0**

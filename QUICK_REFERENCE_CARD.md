@@ -9,7 +9,7 @@
 ## 🎯 HOW TO RUN THE SCRIPT
 
 ### Method 1: Right-Click (Easiest)
-1. Right-click: Final_VBS_Disabler_Professional_v2.ps1
+1. Right-click: VBS_Disable.ps1
 2. Select: "Run with PowerShell"
 3. Script auto-elevates to Administrator
 4. Follow on-screen instructions
@@ -17,7 +17,7 @@
 ### Method 2: PowerShell
 ```powershell
 # Just run it - no need for Set-ExecutionPolicy!
-.\Final_VBS_Disabler_Professional_v2.ps1
+.\VBS_Disable.ps1
 
 # Script handles:
 # - Auto-elevation to Administrator
@@ -164,7 +164,7 @@ cd C:\VMwareFix
 .\Persistent_Enforcement.ps1
 
 # Or re-run main script
-.\Final_VBS_Disabler_Professional_v2.ps1
+.\VBS_Disable.ps1
 ```
 
 ---
@@ -347,7 +347,7 @@ Get-ScheduledTask | Where-Object {$_.TaskName -like "*VBS*"}
 
 ```powershell
 # Run script
-.\Final_VBS_Disabler_Professional_v2.ps1
+.\VBS_Disable.ps1
 
 # Check status
 systeminfo | findstr /i "hyper"
@@ -365,4 +365,4 @@ Unregister-ScheduledTask -TaskName "VBS_Persistent_Enforcer" -Confirm:$false
 
 ---
 
-<p align="center"><strong>Created by <a href="https://github.com/ZACODEC">ZACODEC</a></strong> &bull; <a href="https://github.com/ZACODEC/vbs-disabler">GitHub</a> &bull; Give it a ⭐ if it helped!</p>
+<p align="center"><strong>Created by <a href="https://github.com/zainmustafam977">ZACODEC</a></strong> &bull; <a href="https://github.com/zainmustafam977/vbs-disabler-windows11">GitHub</a> &bull; Give it a ⭐ if it helped!</p>

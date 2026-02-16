@@ -172,5 +172,5 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to th
 ## Support
 
 For issues, questions, or feature requests, please visit:
-- **GitHub Issues:** https://github.com/ZACODEC/vbs-disabler/issues
-- **GitHub Discussions:** https://github.com/ZACODEC/vbs-disabler/discussions
+- **GitHub Issues:** https://github.com/zainmustafam977/vbs-disabler-windows11/issues
+- **GitHub Discussions:** https://github.com/zainmustafam977/vbs-disabler-windows11/discussions
