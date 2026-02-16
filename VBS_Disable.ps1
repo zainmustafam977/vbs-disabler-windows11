@@ -1,4 +1,4 @@
-﻿# .SYNOPSIS
+# .SYNOPSIS
 #     VBS Disabler - Professional Edition with Auto-Elevation
 # .DESCRIPTION
 #     Complete solution for disabling VBS/Device Guard/HVCI on Windows 11 25H2
@@ -27,8 +27,6 @@
 #       VMware Broadcom community
 #       All users who tested and provided feedback
 
-param([switch]$Elevated)
-
 # ============================================================================
 # AUTO-ELEVATION TO ADMINISTRATOR
 # ============================================================================
@@ -38,37 +36,35 @@ function Test-Admin {
     return $currentUser.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
-if (-not $Elevated) {
-    if (-not (Test-Admin)) {
-        Write-Host "========================================" -ForegroundColor Yellow
-        Write-Host " Administrator privileges required!" -ForegroundColor Yellow
-        Write-Host " Attempting to elevate..." -ForegroundColor Yellow
-        Write-Host "========================================" -ForegroundColor Yellow
-        Start-Sleep -Seconds 2
+if (-not (Test-Admin)) {
+    Write-Host "========================================" -ForegroundColor Yellow
+    Write-Host " Administrator privileges required!" -ForegroundColor Yellow
+    Write-Host " Attempting to elevate..." -ForegroundColor Yellow
+    Write-Host "========================================" -ForegroundColor Yellow
+    Start-Sleep -Seconds 2
 
-        try {
-            $scriptPath = $MyInvocation.MyCommand.Path
-            if (-not $scriptPath) {
-                # Running via iex/irm (no script file on disk)
-                # Save the in-memory script to a temp file for elevation
-                $scriptPath = Join-Path $env:TEMP "VBS_Disable.ps1"
-                $scriptText = $MyInvocation.MyCommand.ScriptBlock.Ast.Extent.Text
-                [System.IO.File]::WriteAllText($scriptPath, $scriptText, (New-Object System.Text.UTF8Encoding $true))
-            }
-            Start-Process powershell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`" -Elevated" -f $scriptPath) -Verb RunAs
-            exit
+    try {
+        $scriptPath = $MyInvocation.MyCommand.Path
+        if (-not $scriptPath) {
+            # Running via iex/irm (no script file on disk)
+            # Save the in-memory script to a temp file for elevation
+            $scriptPath = Join-Path $env:TEMP "VBS_Disable.ps1"
+            $scriptText = $MyInvocation.MyCommand.ScriptBlock.Ast.Extent.Text
+            [System.IO.File]::WriteAllText($scriptPath, $scriptText, (New-Object System.Text.UTF8Encoding $false))
         }
-        catch {
-            Write-Host "ERROR: Failed to elevate to Administrator" -ForegroundColor Red
-            Write-Host ""
-            Write-Host "Please run this in an ADMIN PowerShell window:" -ForegroundColor Yellow
-            Write-Host '  irm https://bit.ly/vbs-fix | iex' -ForegroundColor Cyan
-            Write-Host ""
-            Write-Host "To open Admin PowerShell:" -ForegroundColor Yellow
-            Write-Host "  Right-click Start button > Terminal (Admin)" -ForegroundColor Cyan
-            pause
-            exit 1
-        }
+        Start-Process powershell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $scriptPath) -Verb RunAs
+        exit
+    }
+    catch {
+        Write-Host "ERROR: Failed to elevate to Administrator" -ForegroundColor Red
+        Write-Host ""
+        Write-Host "Please run this in an ADMIN PowerShell window:" -ForegroundColor Yellow
+        Write-Host '  irm https://bit.ly/vbs-fix | iex' -ForegroundColor Cyan
+        Write-Host ""
+        Write-Host "To open Admin PowerShell:" -ForegroundColor Yellow
+        Write-Host "  Right-click Start button > Terminal (Admin)" -ForegroundColor Cyan
+        pause
+        exit 1
     }
 }
 
@@ -1091,19 +1087,19 @@ if (Confirm-UserAction "Restart computer NOW?") {
         Start-Sleep -Seconds 1
     }
     Write-Host ""
-    Write-Host "  ╔════════════════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-    Write-Host "  ║                                                                        ║" -ForegroundColor Green
-    Write-Host "  ║  " -NoNewline -ForegroundColor Green
+    Write-Host "  +------------------------------------------------------------------------+" -ForegroundColor Green
+    Write-Host "  |                                                                        |" -ForegroundColor Green
+    Write-Host "  |  " -NoNewline -ForegroundColor Green
     Write-Host "Thank you for using VBS Disabler by ZACODEC!" -NoNewline -ForegroundColor White
-    Write-Host ("  " * 16 + "║") -ForegroundColor Green
-    Write-Host "  ║                                                                        ║" -ForegroundColor Green
-    Write-Host "  ║  " -NoNewline -ForegroundColor Green
+    Write-Host ("  " * 16 + "|") -ForegroundColor Green
+    Write-Host "  |                                                                        |" -ForegroundColor Green
+    Write-Host "  |  " -NoNewline -ForegroundColor Green
     Write-Host "If this helped you, please star the repo on GitHub!" -NoNewline -ForegroundColor Cyan
-    Write-Host ("  " * 9 + "║") -ForegroundColor Green
-    Write-Host "  ║  " -NoNewline -ForegroundColor Green
-    Write-Host (" " * 27 + "║") -ForegroundColor Green
-    Write-Host "  ║                                                                        ║" -ForegroundColor Green
-    Write-Host "  ╚════════════════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+    Write-Host ("  " * 9 + "|") -ForegroundColor Green
+    Write-Host "  |  " -NoNewline -ForegroundColor Green
+    Write-Host (" " * 27 + "|") -ForegroundColor Green
+    Write-Host "  |                                                                        |" -ForegroundColor Green
+    Write-Host "  +------------------------------------------------------------------------+" -ForegroundColor Green
     Write-Host ""
     Start-Sleep -Seconds 3
     Write-Host ""
@@ -1117,19 +1113,19 @@ else {
     Write-Warning2 "After restart, the verification window will auto-open!"
     Write-Host ""
     Write-Host ""
-    Write-Host "  ╔════════════════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-    Write-Host "  ║                                                                        ║" -ForegroundColor Green
-    Write-Host "  ║  " -NoNewline -ForegroundColor Green
+    Write-Host "  +------------------------------------------------------------------------+" -ForegroundColor Green
+    Write-Host "  |                                                                        |" -ForegroundColor Green
+    Write-Host "  |  " -NoNewline -ForegroundColor Green
     Write-Host "Thank you for using VBS Disabler by ZACODEC!" -NoNewline -ForegroundColor White
-    Write-Host ("  " * 16 + "║") -ForegroundColor Green
-    Write-Host "  ║                                                                        ║" -ForegroundColor Green
-    Write-Host "  ║  " -NoNewline -ForegroundColor Green
+    Write-Host ("  " * 16 + "|") -ForegroundColor Green
+    Write-Host "  |                                                                        |" -ForegroundColor Green
+    Write-Host "  |  " -NoNewline -ForegroundColor Green
     Write-Host "If this helped you, please star the repo on GitHub!" -NoNewline -ForegroundColor Cyan
-    Write-Host ("  " * 9 + "║") -ForegroundColor Green
-    Write-Host "  ║  " -NoNewline -ForegroundColor Green
-    Write-Host (" " * 27 + "║") -ForegroundColor Green
-    Write-Host "  ║                                                                        ║" -ForegroundColor Green
-    Write-Host "  ╚════════════════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+    Write-Host ("  " * 9 + "|") -ForegroundColor Green
+    Write-Host "  |  " -NoNewline -ForegroundColor Green
+    Write-Host (" " * 27 + "|") -ForegroundColor Green
+    Write-Host "  |                                                                        |" -ForegroundColor Green
+    Write-Host "  +------------------------------------------------------------------------+" -ForegroundColor Green
     Write-Host ""
     Write-Host "Press any key to exit..." -ForegroundColor White
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
